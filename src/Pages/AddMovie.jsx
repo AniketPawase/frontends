@@ -9,20 +9,23 @@ function AddMovie() {
     const [releaseDate,setReleaseDate]=useState('');
     const navigate = useNavigate();
 
-    const createMovie=()=>{
-        axios.post('https://backends-theta.vercel.app/movies',
-        {
-            movieName: movieName,
-            releaseDate: releaseDate,
-        })
-        .then((response)=>{
-            if(response.data.error){
-                alert(response.data.error);
+    const createMovie = async () => {
+        try {
+            const response = await axios.post('https://backends-theta.vercel.app/movies', {
+                movieName: movieName,
+                releaseDate: releaseDate,
+            });
+            if (response.data.error) {
+                throw new Error(response.data.error);
             }
-        })
-        navigate('/');
-        toast.success("New Movie Added")
-    }
+            toast.success("New Movie Added");
+            navigate('/');
+        } catch (error) {
+            console.error("Error creating movie:", error);
+            toast.error("An error occurred while creating the movie. Please try again later.");
+        }
+    };
+    
   return (
     <div className="add-movie-container">
     <h2 className="add-movie-heading">Add Movie</h2>

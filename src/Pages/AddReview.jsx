@@ -22,26 +22,28 @@ function AddReview() {
             });
     }, []);
 
-    const submitForm=()=>{
-        axios.post('https://backends-theta.vercel.app/reviews',
-        {
-            movieName:selectedMovie,
-            reviewerName: reviewerName,
-            rating:rating,
-            reviewComments:reviewComments
-        })
-        .then((response)=>{
-            if(response.data.error){
-                alert(response.data.error);
-            }
-            else{
+    const submitForm = async () => {
+        try {
+            const response = await axios.post('https://backends-theta.vercel.app/reviews', {
+                movieName: selectedMovie,
+                reviewerName: reviewerName,
+                rating: rating,
+                reviewComments: reviewComments
+            });
+            if (response.data.error) {
+                throw new Error(response.data.error);
+            } else {
                 console.log(response.data);
-                axios.get('https://backends-theta.vercel.app/movies')
             }
-        })
-        
-        toast.success("Your Review has been submitted!")
-    }
+            await axios.get('https://backends-theta.vercel.app/movies');
+  
+            toast.success("Your Review has been submitted!");
+        } catch (error) {
+            console.error("Error submitting review:", error);
+            toast.error("An error occurred while submitting your review. Please try again later.");
+        }
+    };
+    
 
     return (
         <div className="add-review-container">
