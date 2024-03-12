@@ -2,6 +2,7 @@ import axios from 'axios';
 import '../CSS/AddReview.css'
 import React, { useEffect, useState } from 'react';
 import {toast} from "react-toastify" 
+import { useNavigate } from 'react-router-dom';
 
 function AddReview() {
     const [movieList, setMovieList] = useState([]);
@@ -9,6 +10,7 @@ function AddReview() {
     const [reviewerName, setReviewerName] = useState('');
     const [rating, setRating] = useState(0);
     const [reviewComments, setReviewComments] = useState('');
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -38,6 +40,7 @@ function AddReview() {
             const movieData = await axios.get('https://backends-theta.vercel.app/movies');
             console.log(movieData);
             toast.success("Your Review has been submitted!");
+            navigate('/');
         } catch (error) {
             console.error("Error submitting review:", error);
             toast.error("An error occurred while submitting your review. Please try again later.");
