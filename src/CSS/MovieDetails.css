@@ -1,0 +1,72 @@
+/* MovieDetails.css */
+
+.movie-details {
+    padding: 2rem;
+}
+
+.movie-info {
+    margin-bottom: 2rem;
+}
+
+.movie-header {
+    display: flex;
+    align-items: center;
+}
+
+.movie-title {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    margin-right: 1rem;
+    color: #333;
+}
+.avg-rating{
+    position: relative;
+    padding-left: 500px;
+}
+.avg-rating, .review-rating {
+    font-size: 1.2rem;
+    color: #888;
+    margin-bottom: 0;
+}
+
+.rating {
+    position: relative;
+    padding-left: 8px;
+    font-weight: bold;
+    color: #5f5c53;
+}
+
+.reviews-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.review {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviewer-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.review-comments {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.review-rating {
+    color: #888;
+}
+
+/* Hover effect for reviews */
+.review:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
