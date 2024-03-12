@@ -35,9 +35,10 @@ function AddReview() {
                 alert(response.data.error);
             }
             else{
-                axios.get('https://backends-theta.vercel.app/movies')
+                console.log(response.data);
             }
         })
+        axios.get('https://backends-theta.vercel.app/movies')
         toast.success("Your Review has been submitted!")
     }
 
